@@ -1,0 +1,182 @@
+<div class="row">
+  <div class="col">
+    <h1 class="display-4" style="font-size: 20px;font-weight: bold">Data Realisasi Terkini (PDE)</h1>
+    <div class="card card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <h1 class="display-4" style="font-size: 20px;font-weight: bold">Default Register</h1>
+    <div class="card card-body">
+      <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">#</th>
+            <th scope="col">Jenis Laporan</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><i class="fa fa-plane"></i></th>
+            <td>Pinjaman Luar Negeri (PLN)</td>
+            <td>
+              <button (click)="onGetData(template,1)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-handshake-o"></i></th>
+            <td>Hibah</td>
+            <td>
+              <button (click)="onGetData(template,2)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-university"></i></th>
+            <td>Pinjaman Dalam Negeri (PDN)</td>
+            <td>
+              <button (click)="onGetData(template,3)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-star"></i></th>
+            <td>All (PLN, Hibah, dan PDN)</td>
+            <td>
+              <button (click)="onGetData(template,4)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col">
+    <h1 class="display-4" style="font-size: 20px;font-weight: bold">Pipeline Register</h1>
+    <div class="card card-body">
+      <table class="table">
+        <thead>
+          <tr class="table-warning">
+            <th scope="col">#</th>
+            <th scope="col">Jenis Laporan</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><i class="fa fa-plane"></i></th>
+            <td>Pinjaman Luar Negeri (PLN)</td>
+            <td>
+              <button (click)="onGetData(template,5)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-handshake-o"></i></th>
+            <td>Hibah</td>
+            <td>
+              <button (click)="onGetData(template,6)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-university"></i></th>
+            <td>Pinjaman Dalam Negeri (PDN)</td>
+            <td>
+              <button (click)="onGetData(template,7)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><i class="fa fa-star"></i></th>
+            <td>All (PLN, Hibah, dan PDN)</td>
+            <td>
+              <button (click)="onGetData(template,8)" type="button" class="btn btn-outline-primary">
+                Get Data
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+
+  <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left" style="font-weight:bold">Cetak Data Realisasi</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <h5>Jenis Data : <span style="color: purple">{{ jenisData }}</span></h5>
+        <br>
+        <form class="form-inline">
+          <label style="margin-right: 5%" class="label">Per Tanggal</label>
+          <ngbd-datepicker-popup (changeCalendar)="onChangeCalendar($event)"></ngbd-datepicker-popup>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button title="PDF" type="button" class="btn btn-danger" (click)="generateReport('PDF')">
+        <i class="fa fa-file-pdf-o"></i> PDF
+      </button>
+      <button title="Excel" type="button" class="btn btn-success" (click)="generateReport('Excel')">
+          <i class="fa fa-file-excel-o"></i> Excel
+      </button>
+      <button title="Word" type="button" class="btn btn-primary" (click)="generateReport('Word')">
+          <i class="fa fa-file-word-o"></i> Word
+      </button>
+    </div>
+  </div>
+
+
+</ng-template>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false"
+  style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cetak Laporan</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Hello World!!</h4>
+      </div>
+    </div>
+  </div>
+</div>
