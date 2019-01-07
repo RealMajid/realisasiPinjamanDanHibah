@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdDatepickerPopup } from './datepicker-popup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatButtonModule } from '@angular/material';
+import { NgxLoadingModule } from 'ngx-loading';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,7 +39,9 @@ import { MatIconModule, MatButtonModule } from '@angular/material';
     NgbModule,
     BsDatepickerModule.forRoot(),
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxLoadingModule.forRoot({}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
